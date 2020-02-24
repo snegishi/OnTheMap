@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  OnTheMap
 //
 //  Created by Jason on 3/23/15.
@@ -21,18 +21,47 @@ import MapKit
 * respond when the "info" button is tapped.
 */
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     // The map. See the setup in the Storyboard file. Note particularly that the view controller
     // is set up as the map view's delegate.
     @IBOutlet weak var mapView: MKMapView!
     
+    var locations = [StudentLocation]()//[[String : Any]]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // The "locations" array is an array of dictionary objects that are similar to the JSON
-        // data that you can download from parse.
-        let locations = hardCodedLocationData()
+        updateStudentLocations()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    // MARK: - Logout
+    
+    @IBAction func logoutTapped(_ sender: UIButton) {
+        OnTheMapClient.logout(completion: self.handleLogoutResponse(success:error:))
+    }
+
+    func handleLogoutResponse(success: Bool, error: Error?) {
+        if success {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: - Retrieve Student Locations Data
+    
+    @IBAction func updateStudentLocations() {
+        OnTheMapClient.getStudentLocations(uniqueKey: "", completion: self.handleStudentLocationsResponse(locations:error:))
+    }
+    
+    func handleStudentLocationsResponse(locations: [StudentLocation], error: Error?) {
+        LocationModel.locations = locations
         
         // We will create an MKPointAnnotation for each dictionary in "locations". The
         // point annotations will be stored in this array, and then provided to the map view.
@@ -42,19 +71,19 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // to create map annotations. This would be more stylish if the dictionaries were being
         // used to create custom structs. Perhaps StudentLocation structs.
         
-        for dictionary in locations {
+        for dictionary in LocationModel.locations {
             
             // Notice that the float values are being used to create CLLocationDegree values.
             // This is a version of the Double type.
-            let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
-            let long = CLLocationDegrees(dictionary["longitude"] as! Double)
+            let lat = CLLocationDegrees(dictionary.latitude )
+            let long = CLLocationDegrees(dictionary.longitude )
             
             // The lat and long are used to create a CLLocationCoordinates2D instance.
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             
-            let first = dictionary["firstName"] as! String
-            let last = dictionary["lastName"] as! String
-            let mediaURL = dictionary["mediaURL"] as! String
+            let first = dictionary.firstName
+            let last = dictionary.lastName
+            let mediaURL = dictionary.mediaURL
             
             // Here we create the annotation and set its coordiate, title, and subtitle properties
             let annotation = MKPointAnnotation()
@@ -67,10 +96,23 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         
         // When the array is complete, we add the annotations to the map.
+        self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapView.addAnnotations(annotations)
-        
     }
     
+    // MARK: - Check if my location has already been registered.
+    @IBAction func existsMyLocation() {
+        OnTheMapClient.getStudentLocations(uniqueKey: OnTheMapClient.Auth.userId) { (locations, error) in
+            print("existsMyLocation:")
+            if locations.count >= 1 {
+                print(locations)
+            } else {
+                self.performSegue(withIdentifier: "InputLocationIdentifier", sender: self)
+            }
+        }
+        
+    }
+
     // MARK: - MKMapViewDelegate
 
     // Here we create a view with a "right callout accessory view". You might choose to look into other
@@ -113,7 +155,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
 //            app.openURL(NSURL(string: annotationView.annotation.subtitle))
 //        }
 //    }
-
+    
+    
     // MARK: - Sample Data
     
     // Some sample data. This is a dictionary that is more or less similar to the
