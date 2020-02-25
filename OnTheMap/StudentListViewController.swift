@@ -19,15 +19,11 @@ class StudentListViewController: UIViewController {
         
     // MARK: - Life Cycle
     override func viewDidLoad() {
-        self.viewDidLoad()
-        
-        print("viewDidLoad")
-        print(String(reflecting: LocationModel.locations))
+        super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
     }
     
     // MARK: - Get Student List
@@ -57,8 +53,6 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
         let studentLocation = LocationModel.locations[indexPath.row]//locations[indexPath.row]
 
         cell.textLabel?.text = "\(studentLocation.firstName) \(studentLocation.lastName)"
-        print("\(studentLocation.firstName)")
-//        cell.imageView?.image = UIImage(named: "icon_pin")
 
         return cell
     }

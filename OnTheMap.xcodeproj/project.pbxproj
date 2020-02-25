@@ -26,6 +26,7 @@
 		BC2891882401516900E79424 /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2891872401516900E79424 /* StudentListViewController.swift */; };
 		BC28918A24020C7600E79424 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918924020C7600E79424 /* LocationModel.swift */; };
 		BC28918C240387B400E79424 /* SubmitLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918B240387B300E79424 /* SubmitLocationViewController.swift */; };
+		BC28918E24040E8900E79424 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918D24040E8900E79424 /* Student.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		BC2891872401516900E79424 /* StudentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListViewController.swift; sourceTree = "<group>"; };
 		BC28918924020C7600E79424 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		BC28918B240387B300E79424 /* SubmitLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitLocationViewController.swift; sourceTree = "<group>"; };
+		BC28918D24040E8900E79424 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				BC2891792400F3C300E79424 /* LogoutResponse.swift */,
 				BC28917F24011DA800E79424 /* StudentLocationResults.swift */,
 				BC28918324014B0300E79424 /* PostLocationResponse.swift */,
+				BC28918D24040E8900E79424 /* Student.swift */,
 			);
 			name = Responses;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				BC2891862401515500E79424 /* InputLocationViewController.swift in Sources */,
 				BC28918A24020C7600E79424 /* LocationModel.swift in Sources */,
 				BC2891882401516900E79424 /* StudentListViewController.swift in Sources */,
+				BC28918E24040E8900E79424 /* Student.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,27 +13,22 @@ class InputLocationViewController: UIViewController {
     // MARK: - Properties
     
     // MARK: - IBOutlets
-    
-
+    @IBOutlet weak var locationTextField: UITextField!
     
     // MARK: - Life Cycle
     
     
-    // MARK: - Add a new location of myself
-    func postStudentLocation() {
-        OnTheMapClient.postStudentLocation(firstName: "S", lastName: "N", latitude: 135.5196, longitude: 34.6862, mapString: "Osaka", mediaURL: "https://www.kyorikeisan.com/ido-keido-kensaku/idotokeidonorekishi/132.aspx", completion: self.handlePostLocationResponse(success:error:))
+    @IBAction func findLocation() {
+        self.performSegue(withIdentifier: "submitLocationIdentifier", sender: self)
     }
     
-    func handlePostLocationResponse(success: Bool, error: Error?) {
-        if success {
-            print("success")
-        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let submitVC = segue.destination as! SubmitLocationViewController
+        submitVC.location = locationTextField.text!
     }
     
-    // MARK: - Update my location
-    func updateStudentLocation() {
-        
+    @IBAction func cancel() {
+        self.dismiss(animated: true, completion: nil)
     }
-    
-    
 }
+
