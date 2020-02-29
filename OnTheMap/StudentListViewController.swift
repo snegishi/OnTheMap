@@ -31,7 +31,7 @@ class StudentListViewController: UIViewController {
 //        OnTheMapClient.getStudentLocations(uniqueKey: "", completion: self.handleStudentsResponse(studentLocations:error:))
     }
     
-    func handleStudentsResponse(studentLocations: [StudentLocation], error: Error?) {
+    func handleStudentsResponse(studentLocations: [StudentInformation], error: Error?) {
         if !studentLocations.isEmpty {
             
         }

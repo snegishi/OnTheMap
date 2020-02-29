@@ -24,12 +24,15 @@ class OnTheMapClient {
         case getStudentLocations
         case postStudentLocation
         case getUserData
+        case updateStudentLocation
         
         var stringValue: String {
             switch self {
             case .login, .logout:
                 return Endpoints.base + "/session"
-            case .getStudentLocations, .postStudentLocation:
+            case .getStudentLocations:
+                return Endpoints.base + "/StudentLocation?limit=100&order=-updatedAt"
+            case .postStudentLocation, .updateStudentLocation:
                 return Endpoints.base + "/StudentLocation"
             case .getUserData:
                 return Endpoints.base + "/users/" + Auth.userId
@@ -54,8 +57,10 @@ class OnTheMapClient {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
-               completion(false, error)
-               return
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+                return
             }
             let range = 5..<data.count
             let newData = data.subdata(in: range) /* subset response data! */
@@ -139,10 +144,10 @@ class OnTheMapClient {
         return task
     }
     
-    class func getStudentLocations(uniqueKey: String = "", completion: @escaping ([StudentLocation], Error?) -> Void) {
+    class func getStudentLocations(uniqueKey: String = "", completion: @escaping ([StudentInformation], Error?) -> Void) {
         var url = Endpoints.getStudentLocations.url
         if !uniqueKey.isEmpty {
-            url = URL(string: "?uniqueKey=" + uniqueKey, relativeTo: url)!
+            url = URL(string: "&uniqueKey=" + uniqueKey, relativeTo: url)!
         }
         
         taskForGETRequest(url: url, response: StudentLocationResults.self) { (response, error) in
@@ -172,7 +177,7 @@ class OnTheMapClient {
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
-                LocationModel.myLocation = StudentLocation(createdAt: responseObject.createdAt, firstName: firstName, lastName: lastName, latitude: latitude, longitude: longitude, mapString: mapString, mediaURL: mediaURL, objectId: responseObject.objectId, uniqueKey: Auth.userId, updatedAt: responseObject.createdAt)
+                LocationModel.myLocation = StudentInformation(createdAt: responseObject.createdAt, firstName: firstName, lastName: lastName, latitude: latitude, longitude: longitude, mapString: mapString, mediaURL: mediaURL, objectId: responseObject.objectId, uniqueKey: Auth.userId, updatedAt: responseObject.createdAt)
                 DispatchQueue.main.async {
                     completion(true, nil)
                 }
@@ -208,6 +213,37 @@ class OnTheMapClient {
                 print(error)
                 DispatchQueue.main.async {
                     completion(nil, error)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    class func updateStudentLocation(firstName: String, lastName: String, latitude: Double, longitude: Double, mapString: String, mediaURL: String, completion: @escaping (Bool, Error?) -> Void) {
+        let url = Endpoints.updateStudentLocation.url
+        let body = PostLocationRequest(firstName: firstName, lastName: lastName, latitude: latitude, longitude: longitude, mapString: mapString, mediaURL: mediaURL, uniqueKey: Auth.userId)
+        let ResponseType = PostLocationResponse.self
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try! JSONEncoder().encode(body)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+               completion(false, error)
+               return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                LocationModel.myLocation = StudentInformation(createdAt: responseObject.createdAt, firstName: firstName, lastName: lastName, latitude: latitude, longitude: longitude, mapString: mapString, mediaURL: mediaURL, objectId: responseObject.objectId, uniqueKey: Auth.userId, updatedAt: responseObject.createdAt)
+                DispatchQueue.main.async {
+                    completion(true, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(false, error)
                 }
             }
         }

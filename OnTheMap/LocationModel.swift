@@ -9,7 +9,8 @@
 import Foundation
 
 class LocationModel {
-    static var locations = [StudentLocation]()
-    static var myLocation: StudentLocation?
+    static var locations = [StudentInformation]()
+    static var myLocation: StudentInformation?
+    static var existsMyLocation = false
 //    static var students = [Student]()
 }

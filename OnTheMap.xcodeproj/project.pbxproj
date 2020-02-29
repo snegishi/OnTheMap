@@ -18,7 +18,7 @@
 		BC28917623FA365000E79424 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28917523FA365000E79424 /* LoginResponse.swift */; };
 		BC28917823FF631600E79424 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28917723FF631500E79424 /* LoginViewController.swift */; };
 		BC28917A2400F3C400E79424 /* LogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2891792400F3C300E79424 /* LogoutResponse.swift */; };
-		BC28917E24011D6900E79424 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28917D24011D6900E79424 /* StudentLocation.swift */; };
+		BC28917E24011D6900E79424 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28917D24011D6900E79424 /* StudentInformation.swift */; };
 		BC28918024011DA800E79424 /* StudentLocationResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28917F24011DA800E79424 /* StudentLocationResults.swift */; };
 		BC289182240147A600E79424 /* PostLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC289181240147A600E79424 /* PostLocationRequest.swift */; };
 		BC28918424014B0300E79424 /* PostLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918324014B0300E79424 /* PostLocationResponse.swift */; };
@@ -55,7 +55,7 @@
 		BC28917523FA365000E79424 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		BC28917723FF631500E79424 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BC2891792400F3C300E79424 /* LogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResponse.swift; sourceTree = "<group>"; };
-		BC28917D24011D6900E79424 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
+		BC28917D24011D6900E79424 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		BC28917F24011DA800E79424 /* StudentLocationResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResults.swift; sourceTree = "<group>"; };
 		BC289181240147A600E79424 /* PostLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationRequest.swift; sourceTree = "<group>"; };
 		BC28918324014B0300E79424 /* PostLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationResponse.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				BC28917523FA365000E79424 /* LoginResponse.swift */,
-				BC28917D24011D6900E79424 /* StudentLocation.swift */,
+				BC28917D24011D6900E79424 /* StudentInformation.swift */,
 				BC2891792400F3C300E79424 /* LogoutResponse.swift */,
 				BC28917F24011DA800E79424 /* StudentLocationResults.swift */,
 				BC28918324014B0300E79424 /* PostLocationResponse.swift */,
@@ -323,7 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC28917E24011D6900E79424 /* StudentLocation.swift in Sources */,
+				BC28917E24011D6900E79424 /* StudentInformation.swift in Sources */,
 				BC28918C240387B400E79424 /* SubmitLocationViewController.swift in Sources */,
 				BC28917823FF631600E79424 /* LoginViewController.swift in Sources */,
 				BC28918024011DA800E79424 /* StudentLocationResults.swift in Sources */,

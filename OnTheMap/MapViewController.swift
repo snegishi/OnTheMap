@@ -23,19 +23,31 @@ import MapKit
 
 class MapViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    var locations = [StudentInformation]()//[[String : Any]]
+
+    // MARK: - IBOutlets
+    
     // The map. See the setup in the Storyboard file. Note particularly that the view controller
     // is set up as the map view's delegate.
     @IBOutlet weak var mapView: MKMapView!
-    
-    var locations = [StudentLocation]()//[[String : Any]]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateStudentLocations()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("isSubmitted in MapView: \(SubmitLocationViewController.isSubmitted)")
+        if SubmitLocationViewController.isSubmitted {
+            SubmitLocationViewController.isSubmitted = false
+            print("displayMyLocation: Start")
+            displayMyLocation()
+            print("displayMyLocation: End")
+        } else {
+            updateStudentLocations()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,13 +66,24 @@ class MapViewController: UIViewController {
         }
     }
     
+    // MARK: - Display My Location after submitting
+    
+    func displayMyLocation() {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2DMake(LocationModel.myLocation!.latitude, LocationModel.myLocation!.longitude)
+        annotation.title = LocationModel.myLocation!.firstName + " " + LocationModel.myLocation!.lastName
+        annotation.subtitle = LocationModel.myLocation!.mediaURL
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotation(annotation)
+    }
+    
     // MARK: - Retrieve Student Locations Data
     
     @IBAction func updateStudentLocations() {
         OnTheMapClient.getStudentLocations(uniqueKey: "", completion: self.handleStudentLocationsResponse(locations:error:))
     }
     
-    func handleStudentLocationsResponse(locations: [StudentLocation], error: Error?) {
+    func handleStudentLocationsResponse(locations: [StudentInformation], error: Error?) {
         LocationModel.locations = locations
         
         // We will create an MKPointAnnotation for each dictionary in "locations". The
@@ -102,15 +125,22 @@ class MapViewController: UIViewController {
     
     // MARK: - Check if my location has already been registered.
     @IBAction func existsMyLocation() {
-        OnTheMapClient.getStudentLocations(uniqueKey: OnTheMapClient.Auth.userId) { (locations, error) in
-            print("existsMyLocation:")
-            if locations.count >= 1 {
-                print(locations)
-            } else {
+        OnTheMapClient.getStudentLocations(uniqueKey: OnTheMapClient.Auth.userId, completion: self.handleGetStudentLocations(locations:error:))
+    }
+    
+    func handleGetStudentLocations(locations: [StudentInformation], error: Error?) {
+        if locations.count >= 1 {
+            LocationModel.existsMyLocation = true
+            let message = "You Have Already Posted a Student Location. Would you Like to Overwrite Your Current Location ?"
+            let alertVC = UIAlertController(title: "", message: message, preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "Overwrite", style: .default, handler: { (alertAction) in
                 self.performSegue(withIdentifier: "InputLocationIdentifier", sender: self)
-            }
+            }))
+            alertVC.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            self.show(alertVC, sender: nil)
+        } else {
+           self.performSegue(withIdentifier: "InputLocationIdentifier", sender: self)
         }
-        
     }
 }
     
