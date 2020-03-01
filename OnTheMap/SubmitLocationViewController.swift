@@ -20,7 +20,6 @@ class SubmitLocationViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
-    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Life Cycle
@@ -46,11 +45,6 @@ class SubmitLocationViewController: UIViewController {
         }
         if error == nil {
             for placemark in (result?.mapItems)! {
-//                let annotation = MKPointAnnotation()
-//                annotation.coordinate = CLLocationCoordinate2DMake(placemark.placemark.coordinate.latitude, placemark.placemark.coordinate.longitude)
-//                annotation.title = placemark.placemark.name
-//                annotation.subtitle = placemark.placemark.title
-//                self.mapView.addAnnotation(annotation)
                 self.latitude = placemark.placemark.coordinate.latitude
                 self.longitude = placemark.placemark.coordinate.longitude
             }
@@ -61,7 +55,7 @@ class SubmitLocationViewController: UIViewController {
     
     // MARK: - Submit Location
     
-    @IBAction func submitLoction() {
+    @IBAction func submitLocation() {
         searchLocation()
         if LocationModel.existsMyLocation {
             OnTheMapClient.updateStudentLocation(firstName: "S", lastName: "N", latitude: latitude, longitude: longitude, mapString: location, mediaURL: linkTextField.text!, completion: self.handlePostLocationResponse(success:error:))
@@ -73,8 +67,11 @@ class SubmitLocationViewController: UIViewController {
     func handlePostLocationResponse(success: Bool, error: Error?) {
         if success {
             SubmitLocationViewController.isSubmitted = true
+            LocationModel.myLocation?.latitude = latitude
+            LocationModel.myLocation?.longitude = longitude
+            LocationModel.myLocation?.mapString = location
+            LocationModel.myLocation?.mediaURL = linkTextField.text!
             self.dismiss(animated: true, completion: nil)
-            print("isSubmitted in SubmitView: \(SubmitLocationViewController.isSubmitted)")
         } else {
             showPostFailure(message: error?.localizedDescription ?? "")
         }

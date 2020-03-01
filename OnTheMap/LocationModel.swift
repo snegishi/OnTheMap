@@ -12,5 +12,4 @@ class LocationModel {
     static var locations = [StudentInformation]()
     static var myLocation: StudentInformation?
     static var existsMyLocation = false
-//    static var students = [Student]()
 }

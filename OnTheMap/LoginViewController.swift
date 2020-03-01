@@ -37,7 +37,6 @@ class LoginViewController: UIViewController {
         setLoggingIn(false)
         if success {
             OnTheMapClient.getStudentData(completion: {(data, error) in
-                print(String(reflecting: data))
             })
             self.performSegue(withIdentifier: "completeLogin", sender: nil)
             usernameTextField.text = ""

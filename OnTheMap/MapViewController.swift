@@ -39,19 +39,16 @@ class MapViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("isSubmitted in MapView: \(SubmitLocationViewController.isSubmitted)")
-        if SubmitLocationViewController.isSubmitted {
-            SubmitLocationViewController.isSubmitted = false
-            print("displayMyLocation: Start")
-            displayMyLocation()
-            print("displayMyLocation: End")
-        } else {
-            updateStudentLocations()
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if SubmitLocationViewController.isSubmitted {
+            SubmitLocationViewController.isSubmitted = false
+            displayMyLocation()
+        } else {
+            updateStudentLocations()
+        }
     }
     
     // MARK: - Logout

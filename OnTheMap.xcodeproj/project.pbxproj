@@ -22,7 +22,6 @@
 		BC28918024011DA800E79424 /* StudentLocationResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28917F24011DA800E79424 /* StudentLocationResults.swift */; };
 		BC289182240147A600E79424 /* PostLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC289181240147A600E79424 /* PostLocationRequest.swift */; };
 		BC28918424014B0300E79424 /* PostLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918324014B0300E79424 /* PostLocationResponse.swift */; };
-		BC2891862401515500E79424 /* InputLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2891852401515500E79424 /* InputLocationViewController.swift */; };
 		BC2891882401516900E79424 /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2891872401516900E79424 /* StudentListViewController.swift */; };
 		BC28918A24020C7600E79424 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918924020C7600E79424 /* LocationModel.swift */; };
 		BC28918C240387B400E79424 /* SubmitLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918B240387B300E79424 /* SubmitLocationViewController.swift */; };
@@ -59,7 +58,6 @@
 		BC28917F24011DA800E79424 /* StudentLocationResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResults.swift; sourceTree = "<group>"; };
 		BC289181240147A600E79424 /* PostLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationRequest.swift; sourceTree = "<group>"; };
 		BC28918324014B0300E79424 /* PostLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationResponse.swift; sourceTree = "<group>"; };
-		BC2891852401515500E79424 /* InputLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputLocationViewController.swift; sourceTree = "<group>"; };
 		BC2891872401516900E79424 /* StudentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListViewController.swift; sourceTree = "<group>"; };
 		BC28918924020C7600E79424 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		BC28918B240387B300E79424 /* SubmitLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitLocationViewController.swift; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 			children = (
 				4DFABCE91AC0CBAC00D21C43 /* MapViewController.swift */,
 				BC28917723FF631500E79424 /* LoginViewController.swift */,
-				BC2891852401515500E79424 /* InputLocationViewController.swift */,
 				BC2891872401516900E79424 /* StudentListViewController.swift */,
 				BC28918B240387B300E79424 /* SubmitLocationViewController.swift */,
 			);
@@ -335,7 +332,6 @@
 				BC28918424014B0300E79424 /* PostLocationResponse.swift in Sources */,
 				BC28917423FA01D900E79424 /* LoginRequest.swift in Sources */,
 				BC28917623FA365000E79424 /* LoginResponse.swift in Sources */,
-				BC2891862401515500E79424 /* InputLocationViewController.swift in Sources */,
 				BC28918A24020C7600E79424 /* LocationModel.swift in Sources */,
 				BC2891882401516900E79424 /* StudentListViewController.swift in Sources */,
 				BC28918E24040E8900E79424 /* Student.swift in Sources */,
