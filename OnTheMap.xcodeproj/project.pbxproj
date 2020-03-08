@@ -26,6 +26,7 @@
 		BC28918A24020C7600E79424 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918924020C7600E79424 /* LocationModel.swift */; };
 		BC28918C240387B400E79424 /* SubmitLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918B240387B300E79424 /* SubmitLocationViewController.swift */; };
 		BC28918E24040E8900E79424 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918D24040E8900E79424 /* Student.swift */; };
+		BCED3AAB2415224300C02776 /* InputLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED3AAA2415224300C02776 /* InputLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		BC28918924020C7600E79424 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		BC28918B240387B300E79424 /* SubmitLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitLocationViewController.swift; sourceTree = "<group>"; };
 		BC28918D24040E8900E79424 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		BCED3AAA2415224300C02776 /* InputLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				BC28917723FF631500E79424 /* LoginViewController.swift */,
 				BC2891872401516900E79424 /* StudentListViewController.swift */,
 				BC28918B240387B300E79424 /* SubmitLocationViewController.swift */,
+				BCED3AAA2415224300C02776 /* InputLocationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				BC28918424014B0300E79424 /* PostLocationResponse.swift in Sources */,
 				BC28917423FA01D900E79424 /* LoginRequest.swift in Sources */,
 				BC28917623FA365000E79424 /* LoginResponse.swift in Sources */,
+				BCED3AAB2415224300C02776 /* InputLocationViewController.swift in Sources */,
 				BC28918A24020C7600E79424 /* LocationModel.swift in Sources */,
 				BC2891882401516900E79424 /* StudentListViewController.swift in Sources */,
 				BC28918E24040E8900E79424 /* Student.swift in Sources */,

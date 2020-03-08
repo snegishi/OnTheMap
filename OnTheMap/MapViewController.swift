@@ -43,12 +43,7 @@ class MapViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if SubmitLocationViewController.isSubmitted {
-            SubmitLocationViewController.isSubmitted = false
-            displayMyLocation()
-        } else {
-            updateStudentLocations()
-        }
+        updateStudentLocations()
     }
     
     // MARK: - Logout
@@ -63,24 +58,13 @@ class MapViewController: UIViewController {
         }
     }
     
-    // MARK: - Display My Location after submitting
-    
-    func displayMyLocation() {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2DMake(LocationModel.myLocation!.latitude, LocationModel.myLocation!.longitude)
-        annotation.title = LocationModel.myLocation!.firstName + " " + LocationModel.myLocation!.lastName
-        annotation.subtitle = LocationModel.myLocation!.mediaURL
-        mapView.removeAnnotations(mapView.annotations)
-        mapView.addAnnotation(annotation)
-    }
-    
     // MARK: - Retrieve Student Locations Data
     
     @IBAction func updateStudentLocations() {
         OnTheMapClient.getStudentLocations(uniqueKey: "", completion: self.handleStudentLocationsResponse(locations:error:))
     }
     
-    func handleStudentLocationsResponse(locations: [StudentInformation], error: Error?) {
+    fileprivate func updateMap(_ locations: [StudentInformation]) {
         LocationModel.locations = locations
         
         // We will create an MKPointAnnotation for each dictionary in "locations". The
@@ -120,6 +104,14 @@ class MapViewController: UIViewController {
         self.mapView.addAnnotations(annotations)
     }
     
+    func handleStudentLocationsResponse(locations: [StudentInformation], error: Error?) {
+        if error == nil {
+            updateMap(locations)
+        } else {
+            showPostFailure(message: error?.localizedDescription ?? "")
+        }
+    }
+    
     // MARK: - Check if my location has already been registered.
     @IBAction func existsMyLocation() {
         OnTheMapClient.getStudentLocations(uniqueKey: OnTheMapClient.Auth.userId, completion: self.handleGetStudentLocations(locations:error:))
@@ -138,6 +130,14 @@ class MapViewController: UIViewController {
         } else {
            self.performSegue(withIdentifier: "InputLocationIdentifier", sender: self)
         }
+    }
+    
+    // MARK: - Error Message
+    
+    func showPostFailure(message: String) {
+        let alertVC = UIAlertController(title: "Post Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        show(alertVC, sender: nil)
     }
 }
     
