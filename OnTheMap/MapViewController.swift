@@ -126,7 +126,7 @@ class MapViewController: UIViewController {
                 self.performSegue(withIdentifier: "InputLocationIdentifier", sender: self)
             }))
             alertVC.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-            self.show(alertVC, sender: nil)
+            self.present(alertVC, animated: true, completion: nil)
         } else {
            self.performSegue(withIdentifier: "InputLocationIdentifier", sender: self)
         }
@@ -137,7 +137,7 @@ class MapViewController: UIViewController {
     func showPostFailure(message: String) {
         let alertVC = UIAlertController(title: "Post Failed", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        present(alertVC, animated: true, completion: nil)
     }
 }
     

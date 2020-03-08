@@ -33,6 +33,8 @@ class SubmitLocationViewController: UIViewController {
         annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
         annotation.title =  "S N"
         annotation.subtitle = mediaURL
+        let viewRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 2000000, longitudinalMeters: 2000000)
+        mapView.setRegion(viewRegion, animated: false)
         mapView.addAnnotation(annotation)
     }
             
@@ -59,7 +61,7 @@ class SubmitLocationViewController: UIViewController {
     func showPostFailure(message: String) {
         let alertVC = UIAlertController(title: "Post Failed", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        present(alertVC, animated: true, completion: nil)
     }
 }
 

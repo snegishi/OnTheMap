@@ -73,6 +73,6 @@ class InputLocationViewController: UIViewController {
     func showPostFailure(message: String) {
         let alertVC = UIAlertController(title: "Post Failed", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        present(alertVC, animated: true, completion: nil)
     }
 }
