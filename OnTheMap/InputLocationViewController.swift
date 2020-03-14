@@ -46,7 +46,7 @@ class InputLocationViewController: UIViewController {
             mediaURL = linkTextField.text!
             performSegue(withIdentifier: "SubmitLocationIdentifier", sender: self)
         } else {
-            showPostFailure(title: "Post Failed", message: error?.localizedDescription ?? "")
+            showFailure(title: "Post Failed", message: error?.localizedDescription ?? "")
         }
     }
     
