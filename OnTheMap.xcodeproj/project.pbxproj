@@ -27,6 +27,7 @@
 		BC28918C240387B400E79424 /* SubmitLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918B240387B300E79424 /* SubmitLocationViewController.swift */; };
 		BC28918E24040E8900E79424 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28918D24040E8900E79424 /* Student.swift */; };
 		BCED3AAB2415224300C02776 /* InputLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED3AAA2415224300C02776 /* InputLocationViewController.swift */; };
+		BCED3AE0241D141C00C02776 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED3ADF241D141C00C02776 /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		BC28918B240387B300E79424 /* SubmitLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitLocationViewController.swift; sourceTree = "<group>"; };
 		BC28918D24040E8900E79424 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		BCED3AAA2415224300C02776 /* InputLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputLocationViewController.swift; sourceTree = "<group>"; };
+		BCED3ADF241D141C00C02776 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				BC2891872401516900E79424 /* StudentListViewController.swift */,
 				BC28918B240387B300E79424 /* SubmitLocationViewController.swift */,
 				BCED3AAA2415224300C02776 /* InputLocationViewController.swift */,
+				BCED3ADF241D141C00C02776 /* UIViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				4DFABCEA1AC0CBAC00D21C43 /* MapViewController.swift in Sources */,
 				4DFABCE81AC0CBAC00D21C43 /* AppDelegate.swift in Sources */,
 				BC289182240147A600E79424 /* PostLocationRequest.swift in Sources */,
+				BCED3AE0241D141C00C02776 /* UIViewController.swift in Sources */,
 				BC28917A2400F3C400E79424 /* LogoutResponse.swift in Sources */,
 				BC28918424014B0300E79424 /* PostLocationResponse.swift in Sources */,
 				BC28917423FA01D900E79424 /* LoginRequest.swift in Sources */,
