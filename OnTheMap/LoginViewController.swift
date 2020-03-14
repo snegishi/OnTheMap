@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
             usernameTextField.text = ""
             passwordTextField.text = "" 
         } else {
-            showLoginFailure(message: error?.localizedDescription ?? "")
+            showFailure(title: "Login Failed", message: error?.localizedDescription ?? "")
         }
     }
     
@@ -55,12 +55,6 @@ class LoginViewController: UIViewController {
         usernameTextField.isEnabled = !loggingIn
         passwordTextField.isEnabled = !loggingIn
         loginButton.isEnabled = !loggingIn
-    }
-    
-    func showLoginFailure(message: String) {
-        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
     }
     
 }

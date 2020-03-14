@@ -108,7 +108,7 @@ class MapViewController: UIViewController {
         if error == nil {
             updateMap(locations)
         } else {
-            showPostFailure(message: error?.localizedDescription ?? "")
+            showFailure(title: "Post Failed", message: error?.localizedDescription ?? "")
         }
     }
     
@@ -130,14 +130,6 @@ class MapViewController: UIViewController {
         } else {
            self.performSegue(withIdentifier: "InputLocationIdentifier", sender: self)
         }
-    }
-    
-    // MARK: - Error Message
-    
-    func showPostFailure(message: String) {
-        let alertVC = UIAlertController(title: "Post Failed", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertVC, animated: true, completion: nil)
     }
 }
     

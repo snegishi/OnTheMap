@@ -46,7 +46,7 @@ class InputLocationViewController: UIViewController {
             self.mediaURL = linkTextField.text!
             self.performSegue(withIdentifier: "SubmitLocationIdentifier", sender: self)
         } else {
-            showPostFailure(message: error?.localizedDescription ?? "")
+            showPostFailure(title: "Post Failed", message: error?.localizedDescription ?? "")
         }
     }
     
@@ -66,13 +66,5 @@ class InputLocationViewController: UIViewController {
     
     @IBAction func cancel() {
         self.dismiss(animated: true, completion: nil)
-    }
-        
-    // MARK: - Error Message
-    
-    func showPostFailure(message: String) {
-        let alertVC = UIAlertController(title: "Post Failed", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertVC, animated: true, completion: nil)
     }
 }

@@ -55,16 +55,8 @@ class SubmitLocationViewController: UIViewController {
         if success {
             self.dismiss(animated: true, completion: nil)
         } else {
-            showPostFailure(message: error?.localizedDescription ?? "")
+            showFailure(title: "Post Failed", message: error?.localizedDescription ?? "")
         }
-    }
-        
-    // MARK: - Error Message
-    
-    func showPostFailure(message: String) {
-        let alertVC = UIAlertController(title: "Post Failed", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertVC, animated: true, completion: nil)
     }
 }
 
