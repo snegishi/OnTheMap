@@ -30,7 +30,7 @@ class InputLocationViewController: UIViewController {
         DispatchQueue.main.async {
             self.setGeocodingIn(true)
         }
-        localSearch.start(completionHandler: self.handleSearchResult(result:error:))
+        localSearch.start(completionHandler: handleSearchResult(result:error:))
     }
         
     func handleSearchResult(result: MKLocalSearch.Response?, error: Error?) {
@@ -39,12 +39,12 @@ class InputLocationViewController: UIViewController {
         }
         if error == nil {
             for placemark in (result?.mapItems)! {
-                self.latitude = placemark.placemark.coordinate.latitude
-                self.longitude = placemark.placemark.coordinate.longitude
+                latitude = placemark.placemark.coordinate.latitude
+                longitude = placemark.placemark.coordinate.longitude
             }
-            self.location = locationTextField.text!
-            self.mediaURL = linkTextField.text!
-            self.performSegue(withIdentifier: "SubmitLocationIdentifier", sender: self)
+            location = locationTextField.text!
+            mediaURL = linkTextField.text!
+            performSegue(withIdentifier: "SubmitLocationIdentifier", sender: self)
         } else {
             showPostFailure(title: "Post Failed", message: error?.localizedDescription ?? "")
         }
@@ -65,6 +65,6 @@ class InputLocationViewController: UIViewController {
     // MARK: - Cancel
     
     @IBAction func cancel() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
