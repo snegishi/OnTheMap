@@ -29,12 +29,15 @@ class SubmitLocationViewController: UIViewController {
     // MARK: - Display My Location after submitting
     
     func displayMyLocation() {
+        let location = CLLocationCoordinate2DMake(latitude, longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let viewRegion = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(viewRegion, animated: false)
+
         let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        annotation.coordinate = location
         annotation.title =  "S N"
         annotation.subtitle = mediaURL
-        let viewRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 2000000, longitudinalMeters: 2000000)
-        mapView.setRegion(viewRegion, animated: false)
         mapView.addAnnotation(annotation)
     }
             
