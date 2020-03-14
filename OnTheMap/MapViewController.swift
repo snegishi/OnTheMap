@@ -32,10 +32,6 @@ class MapViewController: UIViewController {
     // The map. See the setup in the Storyboard file. Note particularly that the view controller
     // is set up as the map view's delegate.
     @IBOutlet weak var mapView: MKMapView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
